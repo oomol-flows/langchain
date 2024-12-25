@@ -7,11 +7,7 @@ from langchain_anthropic import ChatAnthropic
 from langchain_google_vertexai import ChatVertexAI
 
 def main(params: dict):
-  input: RunnableSerializable | None = params["input"]
-  output: RunnableSerializable = build_model(params)
-  if input is not None:
-    output = input | output
-  return { "output": output }
+  return { "output": build_model(params) }
 
 def build_model(params: dict) -> ChatOpenAI | ChatAnthropic | ChatVertexAI:
   interface: Literal["openai", "claude", "gemni"] = params["interface"]

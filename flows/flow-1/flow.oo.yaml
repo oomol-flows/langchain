@@ -3,10 +3,12 @@ nodes:
     title: "Prompt #1"
     node_id: prompt#2
     inputs_from:
-      - handle: input
-        value:
       - handle: template
         value: "what day is today: {input}"
+      - handle: params
+        from_node:
+          - node_id: +python#1
+            output_handle: output
   - task: self::model
     title: "Model #1"
     node_id: model#1
@@ -46,14 +48,11 @@ nodes:
         from_node:
           - node_id: string-output#2
             output_handle: output
-      - handle: params
-        value:
-          {}
-        schema_overrides:
-          []
+      - handle: input
+        value: what day is today
         from_node:
-          - node_id: +python#1
-            output_handle: output
+          - node_id: prompt#2
+            output_handle: prompt
   - task:
       ui:
         default_width: 450

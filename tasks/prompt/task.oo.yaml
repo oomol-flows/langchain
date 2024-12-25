@@ -1,20 +1,19 @@
 inputs_def:
-  - handle: input
-    description: Input
+  - handle: params
     json_schema:
-      contentMediaType: oomol/var
+      type: object
     value:
-    nullable: true
+      {}
   - handle: template
     json_schema:
       type: string
       ui:widget: text
     value: ""
 outputs_def:
-  - handle: output
+  - handle: prompt
     description: Output
     json_schema:
-      contentMediaType: oomol/var
+      type: string
 ui:
   default_width: 450
 executor:

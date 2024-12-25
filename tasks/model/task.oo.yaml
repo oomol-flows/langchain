@@ -1,8 +1,4 @@
 inputs_def:
-  - handle: input
-    json_schema:
-      contentMediaType: oomol/var
-    value:
   - handle: interface
     json_schema:
       enum:

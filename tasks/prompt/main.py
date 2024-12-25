@@ -1,10 +1,8 @@
-from langchain_core.runnables import RunnableSerializable
+from typing import Any
 from langchain_core.prompts import PromptTemplate
 
 def main(params: dict):
-  input: RunnableSerializable | None = params["input"]
-  template: str = params["template"]
-  output: RunnableSerializable = PromptTemplate.from_template(template)
-  if input is not None:
-    output = input | output
-  return { "output": None }
+  input_params: dict[str, Any] = params["params"]
+  template = PromptTemplate.from_template(params["template"])
+  prompt = template.invoke(**input_params).to_string()
+  return { "prompt": prompt }

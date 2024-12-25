@@ -4,12 +4,10 @@ inputs_def:
       contentMediaType: oomol/var
     value:
     nullable: false
-  - handle: params
+  - handle: input
     json_schema:
-      type: object
-      additionalProperties: true
-    value:
-      {}
+      type: string
+      ui:widget: text
     nullable: false
 outputs_def:
   - handle: response

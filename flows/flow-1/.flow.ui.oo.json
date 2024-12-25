@@ -4,8 +4,8 @@
       "contentWidth": 450,
       "rfNode": {
         "position": {
-          "x": 128,
-          "y": 108
+          "x": 1170.3558308096244,
+          "y": 544
         }
       },
       "sections": {
@@ -40,26 +40,33 @@
       "contentWidth": 450,
       "rfNode": {
         "position": {
-          "x": 1693.639656162282,
-          "y": 108
+          "x": 1711.8306129738612,
+          "y": 316
         }
       },
       "sections": {
         "inputs": {
           "collapsed": {
-            "params": {
-              "[]": false
-            }
+            "params": {}
           }
         }
       }
     },
     "+python#1": {
-      "contentWidth": 674.2584071493591,
+      "contentWidth": 450,
       "rfNode": {
         "position": {
-          "x": 1068.601086695403,
-          "y": 541.1435162942311
+          "x": 662.1611222272201,
+          "y": 530.5310216147045
+        }
+      },
+      "sections": {
+        "outputs": {
+          "collapsed": {
+            "output": {
+              "[]": true
+            }
+          }
         }
       }
     }

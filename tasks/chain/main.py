@@ -17,9 +17,9 @@ def main(inputs: dict, context: Context):
     raise ValueError(f"Unsupported chain type: {type(chain)}")
 
 def _invoke_runnable(chain: RunnableSequence, inputs: dict, context: Context):
-  params: Any | None  = inputs["params"]
+  input: str  = inputs["input"]
   response_structured = chain.invoke(
-    input=params, 
+    input=input, 
     config={
     "callbacks": [BuiltinCallbackHandler(context)]
     },
