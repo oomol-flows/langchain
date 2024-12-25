@@ -4,7 +4,7 @@ nodes:
     node_id: prompt#2
     inputs_from:
       - handle: template
-        value: "what day is today: {input}"
+        value: "Hi, my name is {input}. nice to meet you."
       - handle: params
         from_node:
           - node_id: +python#1
@@ -13,11 +13,6 @@ nodes:
     title: "Model #1"
     node_id: model#1
     inputs_from:
-      - handle: input
-        value:
-        from_node:
-          - node_id: prompt#2
-            output_handle: output
       - handle: interface
         value: openai
       - handle: temperature
@@ -25,11 +20,8 @@ nodes:
       - handle: timeout
         value: 120
       - handle: base_url
-        value: https://aigptx.top/v1
       - handle: api_key
-        value: "Custom,OhMyGPT,Key"
       - handle: model
-        value: gpt-3.5-turbo
   - task: self::string-output
     title: "String Output #1"
     node_id: string-output#2
@@ -68,3 +60,11 @@ nodes:
     title: "Python #1"
     icon: ":logos:python:"
     node_id: +python#1
+  - task: oomol-preview::markdown-preview
+    title: "Markdown preview #1"
+    node_id: markdown-preview#1
+    inputs_from:
+      - handle: text
+        from_node:
+          - node_id: chain#2
+            output_handle: response

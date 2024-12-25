@@ -2,5 +2,5 @@ from oocana import Context
 
 def main(params: dict, context: Context):
   return {
-    "output": { "input": "foobar" },
+    "output": { "input": "Foobar" },
   }

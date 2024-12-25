@@ -6,4 +6,4 @@ scripts:
     pnpm install && pip install -r requirements.txt
 icon: ./icon.png
 dependencies:
-  {}
+  oomol-preview: 0.0.1
