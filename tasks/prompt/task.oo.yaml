@@ -1,0 +1,25 @@
+inputs_def:
+  - handle: params
+    json_schema:
+      type: object
+    value:
+      {}
+  - handle: template
+    json_schema:
+      type: string
+      ui:widget: text
+    value: ""
+outputs_def:
+  - handle: prompt
+    kind: prompt
+    description: Output
+    json_schema:
+      contentMediaType: oomol/var
+ui:
+  default_width: 450
+executor:
+  name: python
+  options:
+    spawn: false
+    entry: main.py
+title: Prompt

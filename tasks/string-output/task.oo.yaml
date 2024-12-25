@@ -1,0 +1,20 @@
+inputs_def:
+  - handle: input
+    kind: model
+    json_schema:
+      contentMediaType: oomol/var
+    value:
+    nullable: false
+outputs_def:
+  - handle: output
+    kind: model
+    json_schema:
+      contentMediaType: oomol/var
+ui:
+  default_width: 450
+executor:
+  name: python
+  options:
+    spawn: false
+    entry: main.py
+title: String Output

@@ -1,0 +1,30 @@
+inputs_def:
+  - handle: model
+    kind: model
+    json_schema:
+      contentMediaType: oomol/var
+    value:
+    nullable: false
+  - handle: input
+    kind: prompt
+    json_schema:
+      contentMediaType: oomol/var
+    value:
+    nullable: false
+outputs_def:
+  - handle: response
+    json_schema:
+      type: string
+    nullable: false
+  - handle: response_structured
+    json_schema:
+      contentMediaType: oomol/var
+    nullable: false
+ui:
+  default_width: 450
+executor:
+  name: python
+  options:
+    spawn: false
+    entry: __init__.py
+title: Chain

@@ -1,0 +1,48 @@
+inputs_def:
+  - handle: interface
+    json_schema:
+      enum:
+        - openai
+        - claude
+        - gemini
+      ui:options:
+        labels:
+          - OpenAI
+          - Claude
+          - Gemini
+    value: openai
+  - handle: model
+    json_schema:
+      type: string
+  - handle: api_key
+    json_schema:
+      contentMediaType: oomol/secret
+      type: string
+    nullable: false
+  - handle: base_url
+    json_schema:
+      type: string
+    nullable: true
+  - handle: temperature
+    json_schema:
+      type: number
+      minimum: 0
+    value: 0
+  - handle: timeout
+    json_schema:
+      type: number
+      exclusiveMinimum: 0
+    value: 120
+outputs_def:
+  - handle: output
+    kind: model
+    json_schema:
+      contentMediaType: oomol/var
+ui:
+  default_width: 450
+executor:
+  name: python
+  options:
+    spawn: false
+    entry: main.py
+title: Model
