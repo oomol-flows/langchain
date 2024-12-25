@@ -5,11 +5,8 @@ nodes:
     inputs_from:
       - handle: input
         value:
-        schema_overrides:
-          - schema:
-              type: "null"
       - handle: template
-        value: ""
+        value: "what day is today: {input}"
   - task: self::model
     title: "Model #1"
     node_id: model#1
@@ -26,14 +23,51 @@ nodes:
       - handle: timeout
         value: 120
       - handle: base_url
-        value:
+        value: https://aigptx.top/v1
       - handle: api_key
         value: "Custom,OhMyGPT,Key"
       - handle: model
-        value: chat-gpt-3
+        value: gpt-3.5-turbo
   - task: self::string-output
-    title: "String Output #2"
+    title: "String Output #1"
     node_id: string-output#2
     inputs_from:
       - handle: input
         value:
+        from_node:
+          - node_id: model#1
+            output_handle: output
+  - task: self::chain
+    title: "Chain #1"
+    node_id: chain#2
+    inputs_from:
+      - handle: chain
+        value:
+        from_node:
+          - node_id: string-output#2
+            output_handle: output
+      - handle: params
+        value:
+          {}
+        schema_overrides:
+          []
+        from_node:
+          - node_id: +python#1
+            output_handle: output
+  - task:
+      ui:
+        default_width: 450
+      inputs_def:
+        []
+      outputs_def:
+        - handle: output
+          description: Output
+          json_schema:
+            type: object
+      executor:
+        name: python
+        options:
+          entry: scriptlets/+python#1.py
+    title: "Python #1"
+    icon: ":logos:python:"
+    node_id: +python#1

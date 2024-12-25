@@ -7,6 +7,15 @@
           "x": 128,
           "y": 108
         }
+      },
+      "sections": {
+        "inputs": {
+          "collapsed": {
+            "template": {
+              "[]": false
+            }
+          }
+        }
       }
     },
     "model#1": {
@@ -22,8 +31,35 @@
       "contentWidth": 450,
       "rfNode": {
         "position": {
-          "x": 1197.383332439459,
+          "x": 1179.4513092154139,
           "y": 108
+        }
+      }
+    },
+    "chain#2": {
+      "contentWidth": 450,
+      "rfNode": {
+        "position": {
+          "x": 1693.639656162282,
+          "y": 108
+        }
+      },
+      "sections": {
+        "inputs": {
+          "collapsed": {
+            "params": {
+              "[]": false
+            }
+          }
+        }
+      }
+    },
+    "+python#1": {
+      "contentWidth": 674.2584071493591,
+      "rfNode": {
+        "position": {
+          "x": 1068.601086695403,
+          "y": 541.1435162942311
         }
       }
     }
