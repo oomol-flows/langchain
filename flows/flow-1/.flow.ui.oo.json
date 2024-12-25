@@ -1,0 +1,31 @@
+{
+  "nodes": {
+    "prompt#2": {
+      "contentWidth": 450,
+      "rfNode": {
+        "position": {
+          "x": 128,
+          "y": 108
+        }
+      }
+    },
+    "model#1": {
+      "contentWidth": 450,
+      "rfNode": {
+        "position": {
+          "x": 662.1611222272201,
+          "y": 108
+        }
+      }
+    },
+    "string-output#2": {
+      "contentWidth": 450,
+      "rfNode": {
+        "position": {
+          "x": 1197.383332439459,
+          "y": 108
+        }
+      }
+    }
+  }
+}

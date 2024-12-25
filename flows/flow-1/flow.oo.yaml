@@ -1,1 +1,39 @@
-nodes: []
+nodes:
+  - task: self::prompt
+    title: "Prompt #1"
+    node_id: prompt#2
+    inputs_from:
+      - handle: input
+        value:
+        schema_overrides:
+          - schema:
+              type: "null"
+      - handle: template
+        value: ""
+  - task: self::model
+    title: "Model #1"
+    node_id: model#1
+    inputs_from:
+      - handle: input
+        value:
+        from_node:
+          - node_id: prompt#2
+            output_handle: output
+      - handle: interface
+        value: openai
+      - handle: temperature
+        value: 0
+      - handle: timeout
+        value: 120
+      - handle: base_url
+        value:
+      - handle: api_key
+        value: "Custom,OhMyGPT,Key"
+      - handle: model
+        value: chat-gpt-3
+  - task: self::string-output
+    title: "String Output #2"
+    node_id: string-output#2
+    inputs_from:
+      - handle: input
+        value:
