@@ -43,16 +43,14 @@ nodes:
     title: "Chain #1"
     node_id: chain#2
     inputs_from:
-      - handle: chain
-        value:
-        from_node:
-          - node_id: string-output#2
-            output_handle: output
       - handle: input
-        value: what day is today
         from_node:
           - node_id: prompt#2
             output_handle: prompt
+      - handle: model
+        from_node:
+          - node_id: string-output#2
+            output_handle: output
   - task:
       ui:
         default_width: 450

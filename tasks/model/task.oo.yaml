@@ -35,6 +35,7 @@ inputs_def:
     value: 120
 outputs_def:
   - handle: output
+    kind: model
     json_schema:
       contentMediaType: oomol/var
 ui:
