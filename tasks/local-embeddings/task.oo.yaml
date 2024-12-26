@@ -1,0 +1,37 @@
+executor:
+  name: python
+  options:
+    entry: __init__.py
+inputs_def:
+  - handle: id
+    json_schema:
+      type: string
+  - handle: model_dir
+    json_schema:
+      type: string
+      ui:widget: dir
+    value:
+    nullable: true
+  - handle: device
+    json_schema:
+      enum:
+        - cuda
+        - cpu
+      ui:options:
+        labels:
+          - CUDA
+          - CPU
+    value: cuda
+  - handle: query_template
+    json_schema:
+      type: string
+      ui:widget: text
+    value: "{input}"
+    nullable: true
+outputs_def:
+  - handle: embeddings
+    json_schema:
+      contentMediaType: oomol/var
+title: Local embeddings
+ui:
+  default_width: 477.3631570027943

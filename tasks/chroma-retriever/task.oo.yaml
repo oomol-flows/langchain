@@ -34,7 +34,6 @@ inputs_def:
     value: true
 outputs_def:
   - handle: output
-    kind: retriever
     json_schema:
       contentMediaType: oomol/var
 title: Chroma Retriever

@@ -57,8 +57,26 @@
     "chroma-retriever#2": {
       "rfNode": {
         "position": {
-          "x": 989.9028493201399,
+          "x": 974.0296876774462,
           "y": 451.78109916323
+        }
+      }
+    },
+    "local-embeddings#1": {
+      "contentWidth": 350,
+      "rfNode": {
+        "position": {
+          "x": 553.1784331334936,
+          "y": 686.78109916323
+        }
+      },
+      "sections": {
+        "inputs": {
+          "collapsed": {
+            "query_template": {
+              "[]": true
+            }
+          }
         }
       }
     }

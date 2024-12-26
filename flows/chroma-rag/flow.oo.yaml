@@ -93,11 +93,28 @@ nodes:
       - handle: documents
         value:
           []
+        from_node:
+          []
       - handle: embeddings
         value:
+        from_node:
+          - node_id: local-embeddings#1
+            output_handle: embeddings
       - handle: database_path
         value:
       - handle: search_k
         value: 5
       - handle: reset_database_at_beginning
         value: true
+  - task: self::local-embeddings
+    title: "Local embeddings #1"
+    node_id: local-embeddings#1
+    inputs_from:
+      - handle: id
+        value: sentence-transformers/multi-qa-MiniLM-L6-cos-v1
+      - handle: query_template
+        value:
+      - handle: model_dir
+        value:
+      - handle: device
+        value: cuda
