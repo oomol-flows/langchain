@@ -5,7 +5,7 @@ nodes:
     inputs_from:
       - handle: template
         value: "Hi, my name is {input}. nice to meet you."
-      - handle: input
+      - handle: params
         value:
   - task: self::model
     title: "Model #1"
@@ -20,11 +20,10 @@ nodes:
       - handle: base_url
       - handle: api_key
       - handle: model
-      - handle: input
-        value:
+      - handle: template
         from_node:
           - node_id: prompt#2
-            output_handle: output
+            output_handle: template
   - task: self::string-output
     title: "String Output #1"
     node_id: string-output#2

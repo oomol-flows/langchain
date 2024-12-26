@@ -1,5 +1,5 @@
 inputs_def:
-  - handle: input
+  - handle: template
     kind: prompt_template
     json_schema:
       contentMediaType: oomol/var

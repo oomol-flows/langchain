@@ -8,10 +8,10 @@ from langchain_anthropic import ChatAnthropic
 from langchain_google_vertexai import ChatVertexAI
 
 def main(params: dict):
-  input: PromptTemplate | None = params["input"]
+  template: PromptTemplate | None = params["template"]
   output: RunnableSerializable | None = build_model(params)
-  if input is not None:
-    output = input | output
+  if template is not None:
+    output = template | output
   return { "model": output }
 
 def build_model(params: dict) -> ChatOpenAI | ChatAnthropic | ChatVertexAI:

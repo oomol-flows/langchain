@@ -7,24 +7,20 @@ nodes:
         value:
         from_node:
           - node_id: prompt-template#1
-            output_handle: output
+            output_handle: template
       - handle: input
         value:
           input: Tom
         from_node:
           []
-        schema_overrides:
-          - path: input
-            schema:
-              type: string
   - task: self::prompt-template
     title: "Prompt template #1"
     node_id: prompt-template#1
     inputs_from:
-      - handle: input
-        value:
       - handle: template
         value: Hi, my name is {input}. nice to meet you.
+      - handle: params
+        value:
   - task: self::chain
     title: "Chain #1"
     node_id: chain#1

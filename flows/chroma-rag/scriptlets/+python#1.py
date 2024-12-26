@@ -8,7 +8,7 @@ def main(params: dict):
     "context": retriever | format,
     "question": RunnablePassthrough(),
   }
-  return { "output": output }
+  return { "params": output }
 
 def format(docs: list[Document]) -> str:
   return "\n\n".join([d.page_content for d in docs])

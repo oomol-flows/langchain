@@ -7,13 +7,13 @@ inputs_def:
     json_schema:
       type: string
     nullable: false
-  - handle: input
+  - handle: params
     json_schema:
       contentMediaType: oomol/var
     value:
     nullable: true
 outputs_def:
-  - handle: output
+  - handle: template
     kind: prompt_template
     json_schema:
       contentMediaType: oomol/var
