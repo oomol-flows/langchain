@@ -12,16 +12,6 @@ inputs_def:
       ui:widget: dir
     value:
     nullable: true
-  - handle: device
-    json_schema:
-      enum:
-        - cuda
-        - cpu
-      ui:options:
-        labels:
-          - CUDA
-          - CPU
-    value: cuda
   - handle: query_template
     json_schema:
       type: string

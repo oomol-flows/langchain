@@ -1,12 +1,14 @@
+from langchain_core.documents import Document
 from langchain_core.runnables import RunnablePassthrough
+from langchain_core.vectorstores import VectorStoreRetriever
 
 def main(params: dict):
-  retriever = params["retriever"]
+  retriever: VectorStoreRetriever = params["retriever"]
   output: dict = {
-    "context": retriever | format_docs,
-    "input": RunnablePassthrough(),
+    "context": retriever | format,
+    "question": RunnablePassthrough(),
   }
   return { "output": output }
 
-def format_docs(docs):
-  return "\n\n".join(docs)
+def format(docs: list[Document]) -> str:
+  return "\n\n".join([d.page_content for d in docs])

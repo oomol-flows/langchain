@@ -24,11 +24,8 @@ nodes:
       - handle: timeout
         value: 120
       - handle: base_url
-        value: https://aigptx.top/v1
       - handle: api_key
-        value: Custom,OhMyGPT,Key
       - handle: model
-        value: command-r-08-2024
       - handle: input
         value: null
         from_node:

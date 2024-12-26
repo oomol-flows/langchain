@@ -22,11 +22,8 @@ nodes:
       - handle: interface
         value: openai
       - handle: model
-        value: command-r-08-2024
       - handle: api_key
-        value: "Custom,OhMyGPT,Key"
       - handle: base_url
-        value: "https://aigptx.top/v1"
       - handle: temperature
         value: 0
       - handle: timeout
@@ -51,6 +48,9 @@ nodes:
             output_handle: output
       - handle: input
         value:
+        from_node:
+          - node_id: +python#3
+            output_handle: output
   - task: oomol-preview::markdown-preview
     title: "Markdown preview #1"
     node_id: markdown-preview#1
@@ -94,7 +94,8 @@ nodes:
         value:
           []
         from_node:
-          []
+          - node_id: +python#2
+            output_handle: documents
       - handle: embeddings
         value:
         from_node:
@@ -113,8 +114,61 @@ nodes:
       - handle: id
         value: sentence-transformers/multi-qa-MiniLM-L6-cos-v1
       - handle: query_template
-        value:
+        value: "{question}"
       - handle: model_dir
         value:
-      - handle: device
-        value: cuda
+  - task:
+      ui:
+        default_width: 450
+      inputs_def:
+        - handle: texts
+          json_schema:
+            type: array
+            items:
+              type: string
+              ui:widget: text
+          value: ""
+      outputs_def:
+        - handle: documents
+          description: Output
+          json_schema:
+            contentMediaType: oomol/var
+      executor:
+        name: python
+        options:
+          entry: scriptlets/+python#2.py
+    title: Documents
+    icon: ":logos:python:"
+    node_id: +python#2
+    inputs_from:
+      - handle: texts
+        value:
+          - Self-reflection is a vital aspect that allows autonomous agents to
+            improve iteratively by refining past action decisions and correcting
+            previous mistakes. It plays a crucial role in real-world tasks where
+            trial and error are inevitable.
+          - ReAct (Yao et al. 2023) integrates reasoning and acting within LLM
+            by extending the action space to be a combination of task-specific
+            discrete actions and the language space. The former enables LLM to
+            interact with the environment (e.g. use Wikipedia search API), while
+            the latter prompting LLM to generate reasoning traces in natural
+            language.
+          - "The ReAct prompt template incorporates explicit steps for LLM to
+            think, roughly formatted as:"
+  - task:
+      ui:
+        default_width: 450
+      inputs_def:
+        []
+      outputs_def:
+        - handle: output
+          description: Output
+          json_schema:
+            type: string
+      executor:
+        name: python
+        options:
+          entry: scriptlets/+python#3.py
+    title: "Python #3"
+    icon: ":logos:python:"
+    node_id: +python#3

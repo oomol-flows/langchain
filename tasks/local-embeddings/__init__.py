@@ -1,18 +1,13 @@
 from numpy import ndarray
 from typing import cast, Literal
-
+from oocana import Context
 from sentence_transformers import SentenceTransformer
 from langchain_core.embeddings import Embeddings
-
-from oocana import Context
-
-_Device = Literal["cpu", "cuda"]
 
 def main(params: dict, context: Context):
   id: str = params["id"]
   model_dir: str | None = params["model_dir"]
   query_template: str | None = params["query_template"]
-  device: _Device = params["device"]
 
   if query_template is None:
     query_template = "{input}"
@@ -21,9 +16,8 @@ def main(params: dict, context: Context):
     model_id=id, 
     query_template=query_template,
     model_dir=model_dir,
-    device = device,
   )
-  return { "output": embeddings }
+  return { "embeddings": embeddings }
 
 class _BuiltinEmbeddings(Embeddings):
   def __init__(
@@ -31,12 +25,10 @@ class _BuiltinEmbeddings(Embeddings):
       model_id: str, 
       query_template: str,
       model_dir: str | None,
-      device: _Device,
     ):
     self._query_template: str = query_template
     self._model = SentenceTransformer(
       model_name_or_path=model_id,
-      device=device,
       cache_folder=model_dir,
     )
 
