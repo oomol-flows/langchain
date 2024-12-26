@@ -9,3 +9,8 @@ scripts:
     pip install -r requirements.txt
 dependencies:
   oomol-preview: 0.0.1
+name: langchain
+description: LangChain is a framework for developing applications powered by
+  large language models (LLMs).
+displayName: LangChain
+releaseNotes: release the first version
