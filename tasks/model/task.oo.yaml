@@ -1,4 +1,10 @@
 inputs_def:
+  - handle: input
+    kind: prompt_template
+    json_schema:
+      contentMediaType: oomol/var
+    value:
+    nullable: true
   - handle: interface
     json_schema:
       enum:

@@ -7,8 +7,7 @@ nodes:
         value: "Hi, my name is {input}. nice to meet you."
       - handle: params
         from_node:
-          - node_id: +python#1
-            output_handle: output
+          []
   - task: self::model
     title: "Model #1"
     node_id: model#1
@@ -22,6 +21,11 @@ nodes:
       - handle: base_url
       - handle: api_key
       - handle: model
+      - handle: input
+        value:
+        from_node:
+          - node_id: prompt#2
+            output_handle: output
   - task: self::string-output
     title: "String Output #1"
     node_id: string-output#2
@@ -37,12 +41,20 @@ nodes:
     inputs_from:
       - handle: input
         from_node:
-          - node_id: prompt#2
-            output_handle: prompt
+          - node_id: +python#1
+            output_handle: output
       - handle: model
         from_node:
           - node_id: string-output#2
             output_handle: output
+  - task: oomol-preview::markdown-preview
+    title: "Markdown preview #1"
+    node_id: markdown-preview#1
+    inputs_from:
+      - handle: text
+        from_node:
+          - node_id: chain#2
+            output_handle: response
   - task:
       ui:
         default_width: 450
@@ -52,7 +64,7 @@ nodes:
         - handle: output
           description: Output
           json_schema:
-            type: object
+            type: string
       executor:
         name: python
         options:
@@ -60,11 +72,3 @@ nodes:
     title: "Python #1"
     icon: ":logos:python:"
     node_id: +python#1
-  - task: oomol-preview::markdown-preview
-    title: "Markdown preview #1"
-    node_id: markdown-preview#1
-    inputs_from:
-      - handle: text
-        from_node:
-          - node_id: chain#2
-            output_handle: response
