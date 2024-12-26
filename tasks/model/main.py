@@ -1,4 +1,5 @@
 from typing import Literal
+from langchain_core.prompts import PromptTemplate
 from pydantic import SecretStr
 from langchain_openai import ChatOpenAI
 from langchain_core.runnables import RunnableSerializable
@@ -7,7 +8,11 @@ from langchain_anthropic import ChatAnthropic
 from langchain_google_vertexai import ChatVertexAI
 
 def main(params: dict):
-  return { "output": build_model(params) }
+  input: PromptTemplate | None = params["input"]
+  output: RunnableSerializable | None = build_model(params)
+  if input is not None:
+    output = input | output
+  return { "output": output }
 
 def build_model(params: dict) -> ChatOpenAI | ChatAnthropic | ChatVertexAI:
   interface: Literal["openai", "claude", "gemni"] = params["interface"]

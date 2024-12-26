@@ -1,18 +1,18 @@
 {
   "nodes": {
-    "prompt#2": {
+    "prompt-messages-template#1": {
       "contentWidth": 450,
       "rfNode": {
         "position": {
-          "x": 578.3499940807073,
-          "y": 179.18855113094298
+          "x": 256,
+          "y": 139
         }
       },
       "sections": {
         "inputs": {
           "collapsed": {
-            "template": {
-              "[]": false
+            "messages": {
+              "[0,\"template\"]": false
             }
           }
         }
@@ -22,26 +22,26 @@
       "contentWidth": 450,
       "rfNode": {
         "position": {
-          "x": 1086.0565857796532,
-          "y": 179.18855113094298
+          "x": 782.8908256373118,
+          "y": 139
         }
       }
     },
-    "string-output#2": {
+    "string-output#1": {
       "contentWidth": 450,
       "rfNode": {
         "position": {
-          "x": 1603.3467727678471,
-          "y": 179.18855113094298
+          "x": 1305.955163406382,
+          "y": 139
         }
       }
     },
-    "chain#2": {
+    "chain#1": {
       "contentWidth": 450,
       "rfNode": {
         "position": {
-          "x": 2135.7260765262945,
-          "y": 387.188551130943
+          "x": 1845.9218104520994,
+          "y": 260.49250209849004
         }
       },
       "sections": {
@@ -56,17 +56,17 @@
       "contentWidth": 450,
       "rfNode": {
         "position": {
-          "x": 2660.3265319486195,
-          "y": 387.188551130943
+          "x": 2382.16457833509,
+          "y": 260.49250209849004
         }
       }
     },
     "+python#1": {
-      "contentWidth": 626.5398715115932,
+      "contentWidth": 575.2136259146998,
       "rfNode": {
         "position": {
-          "x": 1433.7444438526295,
-          "y": 615.1270897325555
+          "x": 866.0685178773663,
+          "y": 557.840949361288
         }
       }
     }
