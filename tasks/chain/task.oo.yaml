@@ -1,16 +1,14 @@
 inputs_def:
   - handle: model
-    kind: model
     json_schema:
       contentMediaType: oomol/var
     value:
     nullable: false
   - handle: input
-    kind: prompt
     json_schema:
       contentMediaType: oomol/var
     value:
-    nullable: false
+    nullable: true
 outputs_def:
   - handle: response
     json_schema:
@@ -21,7 +19,7 @@ outputs_def:
       contentMediaType: oomol/var
     nullable: false
 ui:
-  default_width: 450
+  default_width: 350
 executor:
   name: python
   options:

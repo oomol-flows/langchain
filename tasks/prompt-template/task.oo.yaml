@@ -1,4 +1,9 @@
 inputs_def:
+  - handle: input
+    json_schema:
+      contentMediaType: oomol/var
+    value:
+    nullable: true
   - handle: template
     json_schema:
       type: string

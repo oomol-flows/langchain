@@ -5,3 +5,51 @@ nodes:
     inputs_from:
       - handle: id
         value: rlm/rag-prompt
+      - handle: input
+        value:
+  - task: self::model
+    title: "Model #1"
+    node_id: model#1
+    inputs_from:
+      - handle: input
+        value:
+        from_node:
+          - node_id: prompt-repo-id-template#2
+            output_handle: output
+      - handle: interface
+        value: openai
+      - handle: model
+      - handle: api_key
+      - handle: base_url
+      - handle: temperature
+        value: 0
+      - handle: timeout
+        value: 120
+  - task: self::string-output
+    title: "String Output #2"
+    node_id: string-output#2
+    inputs_from:
+      - handle: input
+        value:
+        from_node:
+          - node_id: model#1
+            output_handle: output
+  - task: self::chain
+    title: "Chain #1"
+    node_id: chain#1
+    inputs_from:
+      - handle: model
+        value:
+        from_node:
+          - node_id: string-output#2
+            output_handle: output
+      - handle: input
+        value:
+  - task: oomol-preview::markdown-preview
+    title: "Markdown preview #1"
+    node_id: markdown-preview#1
+    inputs_from:
+      - handle: text
+        from_node:
+          - node_id: chain#1
+            output_handle: response

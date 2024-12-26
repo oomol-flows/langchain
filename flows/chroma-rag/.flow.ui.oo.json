@@ -8,6 +8,42 @@
           "y": 214.1466639904098
         }
       }
+    },
+    "model#1": {
+      "contentWidth": 450,
+      "rfNode": {
+        "position": {
+          "x": 925.0281395246539,
+          "y": 214.1466639904098
+        }
+      }
+    },
+    "string-output#2": {
+      "contentWidth": 350,
+      "rfNode": {
+        "position": {
+          "x": 1421.0014915917852,
+          "y": 214.1466639904098
+        }
+      }
+    },
+    "chain#1": {
+      "contentWidth": 350,
+      "rfNode": {
+        "position": {
+          "x": 1823.674057719171,
+          "y": 214.1466639904098
+        }
+      }
+    },
+    "markdown-preview#1": {
+      "contentWidth": 450,
+      "rfNode": {
+        "position": {
+          "x": 2209.082926982176,
+          "y": 214.1466639904098
+        }
+      }
     }
   }
 }

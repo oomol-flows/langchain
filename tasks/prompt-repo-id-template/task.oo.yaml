@@ -6,6 +6,12 @@ inputs_def:
   - handle: id
     json_schema:
       type: string
+    nullable: false
+  - handle: input
+    json_schema:
+      contentMediaType: oomol/var
+    value:
+    nullable: true
 outputs_def:
   - handle: output
     kind: prompt_template

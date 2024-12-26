@@ -5,9 +5,8 @@ nodes:
     inputs_from:
       - handle: template
         value: "Hi, my name is {input}. nice to meet you."
-      - handle: params
-        from_node:
-          []
+      - handle: input
+        value:
   - task: self::model
     title: "Model #1"
     node_id: model#1

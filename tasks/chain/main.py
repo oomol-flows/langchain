@@ -17,7 +17,7 @@ def main(inputs: dict, context: Context):
     raise ValueError(f"Unsupported chain type: {type(model)}")
 
 def _invoke_runnable(model: RunnableSequence, inputs: dict, context: Context):
-  input: PromptValue  = inputs["input"]
+  input: PromptValue | None  = inputs["input"]
   response_structured = model.invoke(
     input=input, 
     config={
