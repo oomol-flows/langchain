@@ -1,0 +1,35 @@
+inputs_def:
+  - handle: messages
+    json_schema:
+      type: array
+      items:
+        type: object
+        additionalProperties: false
+        required:
+          - role
+          - template
+        properties:
+          role:
+            type: string
+            enum:
+              - system
+              - user
+              - assistant
+          template:
+            type: string
+            ui:widget: text
+    value:
+      []
+outputs_def:
+  - handle: output
+    kind: prompt_template
+    json_schema:
+      contentMediaType: oomol/var
+ui:
+  default_width: 450
+executor:
+  name: python
+  options:
+    spawn: false
+    entry: main.py
+title: Prompt messages template

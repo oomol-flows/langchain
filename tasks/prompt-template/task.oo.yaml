@@ -16,4 +16,4 @@ executor:
   options:
     spawn: false
     entry: main.py
-title: Prompt
+title: Prompt template

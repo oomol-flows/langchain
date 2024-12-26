@@ -1,4 +1,3 @@
-from typing import Any
 from langchain_core.prompts import PromptTemplate
 
 def main(params: dict):

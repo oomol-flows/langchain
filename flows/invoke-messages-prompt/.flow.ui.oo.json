@@ -1,0 +1,74 @@
+{
+  "nodes": {
+    "prompt-messages-template#1": {
+      "contentWidth": 450,
+      "rfNode": {
+        "position": {
+          "x": 256,
+          "y": 139
+        }
+      },
+      "sections": {
+        "inputs": {
+          "collapsed": {
+            "messages": {
+              "[0,\"template\"]": false
+            }
+          }
+        }
+      }
+    },
+    "model#1": {
+      "contentWidth": 450,
+      "rfNode": {
+        "position": {
+          "x": 782.8908256373118,
+          "y": 139
+        }
+      }
+    },
+    "string-output#1": {
+      "contentWidth": 450,
+      "rfNode": {
+        "position": {
+          "x": 1305.955163406382,
+          "y": 139
+        }
+      }
+    },
+    "chain#1": {
+      "contentWidth": 450,
+      "rfNode": {
+        "position": {
+          "x": 1845.9218104520994,
+          "y": 260.49250209849004
+        }
+      },
+      "sections": {
+        "inputs": {
+          "collapsed": {
+            "params": {}
+          }
+        }
+      }
+    },
+    "markdown-preview#1": {
+      "contentWidth": 450,
+      "rfNode": {
+        "position": {
+          "x": 2382.16457833509,
+          "y": 260.49250209849004
+        }
+      }
+    },
+    "+python#1": {
+      "contentWidth": 575.2136259146998,
+      "rfNode": {
+        "position": {
+          "x": 866.0685178773663,
+          "y": 557.840949361288
+        }
+      }
+    }
+  }
+}
