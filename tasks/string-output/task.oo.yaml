@@ -1,5 +1,5 @@
 inputs_def:
-  - handle: input
+  - handle: model
     kind: model
     json_schema:
       contentMediaType: oomol/var
@@ -7,7 +7,7 @@ inputs_def:
     nullable: false
 outputs_def:
   - handle: output
-    kind: model
+    kind: output
     json_schema:
       contentMediaType: oomol/var
 ui:

@@ -3,10 +3,8 @@ from langchain_core.output_parsers import StrOutputParser
 
 
 def main(params: dict):
-  input: RunnableSerializable | None = params["input"]
+  model: RunnableSerializable = params["model"]
   output: RunnableSerializable = StrOutputParser()
-  if input is not None:
-    output = input | output
   return {
-    "output": output,
+    "output": model | output,
   }

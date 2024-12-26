@@ -12,7 +12,7 @@ def main(params: dict):
   output: RunnableSerializable | None = build_model(params)
   if input is not None:
     output = input | output
-  return { "output": output }
+  return { "model": output }
 
 def build_model(params: dict) -> ChatOpenAI | ChatAnthropic | ChatVertexAI:
   interface: Literal["openai", "claude", "gemni"] = params["interface"]

@@ -32,11 +32,10 @@ nodes:
     title: "String Output #2"
     node_id: string-output#2
     inputs_from:
-      - handle: input
-        value:
+      - handle: model
         from_node:
           - node_id: model#1
-            output_handle: output
+            output_handle: model
   - task: self::chain
     title: "Chain #1"
     node_id: chain#1
