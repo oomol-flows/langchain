@@ -29,13 +29,11 @@ nodes:
     title: "Chain #1"
     node_id: chain#1
     inputs_from:
-      - handle: model
-        value:
+      - handle: output
         from_node:
           - node_id: string-output#1
             output_handle: output
-      - handle: input
-        value:
+      - handle: prompt
         from_node:
           - node_id: prompt#1
             output_handle: prompt

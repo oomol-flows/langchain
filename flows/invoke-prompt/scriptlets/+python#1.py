@@ -1,4 +1,2 @@
-from oocana import Context
-
-def main(params: dict, context: Context):
-  return { "output": "Tom" }
+def main():
+  return { "prompt": "Tom" }
