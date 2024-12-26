@@ -1,0 +1,40 @@
+executor:
+  name: python
+  options:
+    entry: __init__.py
+inputs_def:
+  - handle: documents
+    json_schema:
+      contentMediaType: oomol/var
+      items:
+        {}
+    value:
+      []
+    nullable: false
+  - handle: embeddings
+    json_schema:
+      contentMediaType: oomol/var
+    value:
+    nullable: true
+  - handle: database_path
+    description: Input
+    json_schema:
+      type: string
+      ui:widget: dir
+    value:
+    nullable: true
+  - handle: search_k
+    json_schema:
+      type: integer
+      minimum: 1
+    value: 5
+  - handle: reset_database_at_beginning
+    json_schema:
+      type: boolean
+    value: true
+outputs_def:
+  - handle: output
+    kind: retriever
+    json_schema:
+      contentMediaType: oomol/var
+title: Chroma Retriever

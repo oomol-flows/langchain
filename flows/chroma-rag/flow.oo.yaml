@@ -7,6 +7,9 @@ nodes:
         value: rlm/rag-prompt
       - handle: input
         value:
+        from_node:
+          - node_id: +python#1
+            output_handle: output
   - task: self::model
     title: "Model #1"
     node_id: model#1
@@ -19,8 +22,11 @@ nodes:
       - handle: interface
         value: openai
       - handle: model
+        value: command-r-08-2024
       - handle: api_key
+        value: "Custom,OhMyGPT,Key"
       - handle: base_url
+        value: "https://aigptx.top/v1"
       - handle: temperature
         value: 0
       - handle: timeout
@@ -53,3 +59,45 @@ nodes:
         from_node:
           - node_id: chain#1
             output_handle: response
+  - task:
+      ui:
+        default_width: 450
+      inputs_def:
+        - handle: retriever
+          description: Input
+          json_schema:
+            contentMediaType: oomol/var
+          nullable: false
+      outputs_def:
+        - handle: output
+          description: Output
+          json_schema:
+            contentMediaType: oomol/var
+      executor:
+        name: python
+        options:
+          entry: scriptlets/+python#1.py
+    title: Combine context & input
+    icon: ":logos:python:"
+    node_id: +python#1
+    inputs_from:
+      - handle: retriever
+        value:
+        from_node:
+          - node_id: chroma-retriever#2
+            output_handle: output
+  - task: self::chroma-retriever
+    title: "Chroma Retriever #2"
+    node_id: chroma-retriever#2
+    inputs_from:
+      - handle: documents
+        value:
+          []
+      - handle: embeddings
+        value:
+      - handle: database_path
+        value:
+      - handle: search_k
+        value: 5
+      - handle: reset_database_at_beginning
+        value: true
