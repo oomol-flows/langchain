@@ -1,0 +1,7 @@
+nodes:
+  - task: self::prompt-repo-id-template
+    title: "Prompt repo ID template #2"
+    node_id: prompt-repo-id-template#2
+    inputs_from:
+      - handle: id
+        value: rlm/rag-prompt

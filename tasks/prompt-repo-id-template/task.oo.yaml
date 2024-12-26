@@ -1,0 +1,16 @@
+executor:
+  name: python
+  options:
+    entry: __init__.py
+inputs_def:
+  - handle: id
+    json_schema:
+      type: string
+outputs_def:
+  - handle: output
+    kind: prompt_template
+    json_schema:
+      contentMediaType: oomol/var
+title: Prompt repo ID template
+ui:
+  default_width: 350
