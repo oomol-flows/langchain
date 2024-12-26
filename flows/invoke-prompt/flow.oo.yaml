@@ -5,7 +5,7 @@ nodes:
     inputs_from:
       - handle: template
         value: "Hi, my name is {input}. nice to meet you."
-      - handle: input
+      - handle: params
         value:
   - task: self::model
     title: "Model #1"
@@ -20,29 +20,27 @@ nodes:
       - handle: base_url
       - handle: api_key
       - handle: model
-      - handle: input
-        value:
+      - handle: template
         from_node:
           - node_id: prompt#2
-            output_handle: output
+            output_handle: template
   - task: self::string-output
     title: "String Output #1"
     node_id: string-output#2
     inputs_from:
-      - handle: input
-        value:
+      - handle: model
         from_node:
           - node_id: model#1
-            output_handle: output
+            output_handle: model
   - task: self::chain
     title: "Chain #1"
     node_id: chain#2
     inputs_from:
-      - handle: input
+      - handle: prompt
         from_node:
           - node_id: +python#1
-            output_handle: output
-      - handle: model
+            output_handle: prompt
+      - handle: output
         from_node:
           - node_id: string-output#2
             output_handle: output
@@ -60,7 +58,7 @@ nodes:
       inputs_def:
         []
       outputs_def:
-        - handle: output
+        - handle: prompt
           description: Output
           json_schema:
             type: string

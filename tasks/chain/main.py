@@ -7,19 +7,19 @@ from langchain_core.prompt_values import PromptValue
 from langchain.agents import AgentExecutor
 from .callback import BuiltinCallbackHandler
 
-def main(inputs: dict, context: Context):
-  model: RunnableSerializable = inputs["model"]
-  if isinstance(model, RunnableSequence):
-    return _invoke_runnable(model, inputs, context)
-  elif isinstance(model, AgentExecutor):
-    return _invoke_agent_executor(model, inputs, context)
+def main(params: dict, context: Context):
+  output: RunnableSerializable = params["output"]
+  if isinstance(output, RunnableSequence):
+    return _invoke_runnable(output, params, context)
+  elif isinstance(output, AgentExecutor):
+    return _invoke_agent_executor(output, params, context)
   else:
-    raise ValueError(f"Unsupported chain type: {type(model)}")
+    raise ValueError(f"Unsupported chain type: {type(output)}")
 
-def _invoke_runnable(model: RunnableSequence, inputs: dict, context: Context):
-  input: PromptValue | None  = inputs["input"]
-  response_structured = model.invoke(
-    input=input, 
+def _invoke_runnable(output: RunnableSequence, params: dict, context: Context):
+  prompt: PromptValue | None  = params["prompt"]
+  response_structured = output.invoke(
+    input=prompt, 
     config={
       "callbacks": [BuiltinCallbackHandler(context)]
     },
@@ -34,12 +34,12 @@ def _invoke_runnable(model: RunnableSequence, inputs: dict, context: Context):
     "response_structured": response_structured,
   }
 
-def _invoke_agent_executor(executor: AgentExecutor, inputs: dict, context: Context):
-  params = inputs["params"]
-  if not isinstance(params, str):
-    raise ValueError(f"expect string params (got {type(params)}) when chain is a agent executor")
-  params = {"input": params}
-  response = executor.invoke(params, {
+def _invoke_agent_executor(executor: AgentExecutor, params: dict, context: Context):
+  prompt: str | dict = params["prompt"]
+  if not isinstance(prompt, str):
+    raise ValueError(f"expect string params (got {type(prompt)}) when chain is a agent executor")
+  prompt = {"input": prompt}
+  response = executor.invoke(prompt, {
     "callbacks": [BuiltinCallbackHandler(context)]
   })
   return {

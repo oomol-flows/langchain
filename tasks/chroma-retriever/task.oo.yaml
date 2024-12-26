@@ -33,7 +33,8 @@ inputs_def:
       type: boolean
     value: true
 outputs_def:
-  - handle: output
+  - handle: retriever
+    kind: retriever
     json_schema:
       contentMediaType: oomol/var
 title: Chroma Retriever

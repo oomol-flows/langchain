@@ -32,7 +32,7 @@ def main(params: dict, context: Context):
       persist_directory=database_path,
       embedding=embeddings,
     )
-  output = vector_store.as_retriever(
+  retriever = vector_store.as_retriever(
     search_kwargs={"k": search_k},
   )
-  return { "output": output }
+  return { "retriever": retriever }

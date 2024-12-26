@@ -1,10 +1,12 @@
 inputs_def:
-  - handle: model
+  - handle: output
+    kind: output
     json_schema:
       contentMediaType: oomol/var
     value:
     nullable: false
-  - handle: input
+  - handle: prompt
+    kind: prompt
     json_schema:
       contentMediaType: oomol/var
     value:

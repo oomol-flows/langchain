@@ -1,5 +1,5 @@
 inputs_def:
-  - handle: input
+  - handle: template
     kind: prompt_template
     json_schema:
       contentMediaType: oomol/var
@@ -40,7 +40,7 @@ inputs_def:
       exclusiveMinimum: 0
     value: 120
 outputs_def:
-  - handle: output
+  - handle: model
     kind: model
     json_schema:
       contentMediaType: oomol/var

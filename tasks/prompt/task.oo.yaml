@@ -3,20 +3,23 @@ executor:
   options:
     entry: __init__.py
 inputs_def:
-  - handle: id
-    json_schema:
-      type: string
-    nullable: false
-  - handle: params
+  - handle: template
     json_schema:
       contentMediaType: oomol/var
     value:
-    nullable: true
+    nullable: false
+  - handle: input
+    json_schema:
+      type: object
+      additionalProperties:
+        type: string
+    value:
+      {}
 outputs_def:
-  - handle: template
-    kind: prompt_template
+  - handle: prompt
+    kind: prompt
     json_schema:
       contentMediaType: oomol/var
-title: Prompt repo ID template
+title: Prompt
 ui:
   default_width: 350

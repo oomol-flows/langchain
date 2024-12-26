@@ -5,20 +5,14 @@ nodes:
     inputs_from:
       - handle: id
         value: rlm/rag-prompt
-      - handle: input
-        value:
+      - handle: params
         from_node:
           - node_id: +python#1
-            output_handle: output
+            output_handle: params
   - task: self::model
     title: "Model #1"
     node_id: model#1
     inputs_from:
-      - handle: input
-        value:
-        from_node:
-          - node_id: prompt-repo-id-template#2
-            output_handle: output
       - handle: interface
         value: openai
       - handle: model
@@ -28,29 +22,30 @@ nodes:
         value: 0
       - handle: timeout
         value: 120
+      - handle: template
+        from_node:
+          - node_id: prompt-repo-id-template#2
+            output_handle: template
   - task: self::string-output
     title: "String Output #2"
     node_id: string-output#2
     inputs_from:
-      - handle: input
-        value:
+      - handle: model
         from_node:
           - node_id: model#1
-            output_handle: output
+            output_handle: model
   - task: self::chain
     title: "Chain #1"
     node_id: chain#1
     inputs_from:
-      - handle: model
-        value:
+      - handle: output
         from_node:
           - node_id: string-output#2
             output_handle: output
-      - handle: input
-        value:
+      - handle: prompt
         from_node:
           - node_id: +python#3
-            output_handle: output
+            output_handle: prompt
   - task: oomol-preview::markdown-preview
     title: "Markdown preview #1"
     node_id: markdown-preview#1
@@ -69,7 +64,7 @@ nodes:
             contentMediaType: oomol/var
           nullable: false
       outputs_def:
-        - handle: output
+        - handle: params
           description: Output
           json_schema:
             contentMediaType: oomol/var
@@ -85,7 +80,7 @@ nodes:
         value:
         from_node:
           - node_id: chroma-retriever#2
-            output_handle: output
+            output_handle: retriever
   - task: self::chroma-retriever
     title: "Chroma Retriever #2"
     node_id: chroma-retriever#2
@@ -161,7 +156,7 @@ nodes:
       inputs_def:
         []
       outputs_def:
-        - handle: output
+        - handle: prompt
           description: Output
           json_schema:
             type: string
@@ -169,6 +164,6 @@ nodes:
         name: python
         options:
           entry: scriptlets/+python#3.py
-    title: "Python #3"
+    title: "Generate question"
     icon: ":logos:python:"
     node_id: +python#3

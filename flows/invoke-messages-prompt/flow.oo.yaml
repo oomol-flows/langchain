@@ -11,7 +11,7 @@ nodes:
               correct answer. You must use sarcasm."
           - role: user
             template: I am confused and have a question for you. {input}
-      - handle: input
+      - handle: params
         value:
   - node_id: model#1
     node_type: task_node
@@ -26,34 +26,33 @@ nodes:
       - handle: base_url
       - handle: api_key
       - handle: model
-      - handle: input
+      - handle: template
         value: null
         from_node:
           - node_id: prompt-messages-template#1
-            output_handle: output
+            output_handle: template
     task: self::model
   - node_id: string-output#1
     node_type: task_node
     title: "String Output #2"
     inputs_from:
-      - handle: input
-        value: null
+      - handle: model
         from_node:
           - node_id: model#1
-            output_handle: output
+            output_handle: model
     task: self::string-output
   - node_id: chain#1
     node_type: task_node
     title: "Chain #2"
     inputs_from:
-      - handle: input
-        from_node:
-          - node_id: +python#1
-            output_handle: output
-      - handle: model
+      - handle: output
         from_node:
           - node_id: string-output#1
             output_handle: output
+      - handle: prompt
+        from_node:
+          - node_id: +python#1
+            output_handle: prompt
     task: self::chain
   - node_id: markdown-preview#1
     node_type: task_node
@@ -70,7 +69,7 @@ nodes:
       inputs_def:
         []
       outputs_def:
-        - handle: output
+        - handle: prompt
           description: Output
           json_schema:
             type: string
