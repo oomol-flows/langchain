@@ -1,0 +1,73 @@
+nodes:
+  - task: self::prompt
+    title: "Prompt #1"
+    node_id: prompt#1
+    inputs_from:
+      - handle: template
+        value:
+        from_node:
+          - node_id: prompt-template#1
+            output_handle: output
+      - handle: input
+        value:
+          input: Tom
+        from_node:
+          []
+        schema_overrides:
+          - path: input
+            schema:
+              type: string
+  - task: self::prompt-template
+    title: "Prompt template #1"
+    node_id: prompt-template#1
+    inputs_from:
+      - handle: input
+        value:
+      - handle: template
+        value: Hi, my name is {input}. nice to meet you.
+  - task: self::chain
+    title: "Chain #1"
+    node_id: chain#1
+    inputs_from:
+      - handle: model
+        value:
+        from_node:
+          - node_id: string-output#1
+            output_handle: output
+      - handle: input
+        value:
+        from_node:
+          - node_id: prompt#1
+            output_handle: prompt
+  - task: self::model
+    title: "Model #1"
+    node_id: model#1
+    inputs_from:
+      - handle: input
+        value:
+      - handle: interface
+        value: openai
+      - handle: model
+      - handle: api_key
+      - handle: base_url
+      - handle: temperature
+        value: 0
+      - handle: timeout
+        value: 120
+  - task: oomol-preview::markdown-preview
+    title: "Markdown preview #1"
+    node_id: markdown-preview#1
+    inputs_from:
+      - handle: text
+        from_node:
+          - node_id: chain#1
+            output_handle: response
+  - task: self::string-output
+    title: "String Output #1"
+    node_id: string-output#1
+    inputs_from:
+      - handle: input
+        value:
+        from_node:
+          - node_id: model#1
+            output_handle: output

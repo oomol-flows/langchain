@@ -5,6 +5,7 @@ inputs_def:
     value:
     nullable: false
   - handle: input
+    kind: prompt
     json_schema:
       contentMediaType: oomol/var
     value:

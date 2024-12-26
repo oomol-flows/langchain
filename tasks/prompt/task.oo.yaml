@@ -1,0 +1,25 @@
+executor:
+  name: python
+  options:
+    entry: __init__.py
+inputs_def:
+  - handle: template
+    json_schema:
+      contentMediaType: oomol/var
+    value:
+    nullable: false
+  - handle: input
+    json_schema:
+      type: object
+      additionalProperties:
+        type: string
+    value:
+      {}
+outputs_def:
+  - handle: prompt
+    kind: prompt
+    json_schema:
+      contentMediaType: oomol/var
+title: Prompt
+ui:
+  default_width: 350

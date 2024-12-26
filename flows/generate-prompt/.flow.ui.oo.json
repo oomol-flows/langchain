@@ -1,0 +1,58 @@
+{
+  "nodes": {
+    "prompt#1": {
+      "contentWidth": 350,
+      "rfNode": {
+        "position": {
+          "x": 671,
+          "y": 137
+        }
+      }
+    },
+    "prompt-template#1": {
+      "contentWidth": 414.57129420880324,
+      "rfNode": {
+        "position": {
+          "x": 199,
+          "y": 135
+        }
+      }
+    },
+    "chain#1": {
+      "contentWidth": 350,
+      "rfNode": {
+        "position": {
+          "x": 1089,
+          "y": 15
+        }
+      }
+    },
+    "model#1": {
+      "contentWidth": 450,
+      "rfNode": {
+        "position": {
+          "x": 151.47658187684874,
+          "y": -321.29776674507053
+        }
+      }
+    },
+    "markdown-preview#1": {
+      "contentWidth": 450,
+      "rfNode": {
+        "position": {
+          "x": 1501,
+          "y": 15
+        }
+      }
+    },
+    "string-output#1": {
+      "contentWidth": 350,
+      "rfNode": {
+        "position": {
+          "x": 671,
+          "y": -159.29776674507053
+        }
+      }
+    }
+  }
+}
