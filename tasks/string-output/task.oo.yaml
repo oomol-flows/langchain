@@ -11,7 +11,7 @@ outputs_def:
     json_schema:
       contentMediaType: oomol/var
 ui:
-  default_width: 450
+  default_width: 350
 executor:
   name: python
   options:

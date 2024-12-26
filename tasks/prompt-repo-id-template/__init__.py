@@ -1,13 +1,11 @@
-from langchain_core.prompts import ChatPromptTemplate
+from langchain import hub
 from langchain_core.runnables import RunnableSerializable
 from langchain_core.prompts import PromptTemplate
 
 def main(params: dict):
-  messages: list[dict] = params["messages"]
+  owner_repo_commit: str = params["id"]
   input: RunnableSerializable | None = params["input"]
-  output: RunnableSerializable = ChatPromptTemplate([
-    (m["role"], m["template"]) for m in messages
-  ])
+  output = hub.pull(owner_repo_commit)
   if input is not None:
     output = input | output
 

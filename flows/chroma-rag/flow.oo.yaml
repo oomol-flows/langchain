@@ -1,0 +1,174 @@
+nodes:
+  - task: self::prompt-repo-id-template
+    title: "Prompt repo ID template #2"
+    node_id: prompt-repo-id-template#2
+    inputs_from:
+      - handle: id
+        value: rlm/rag-prompt
+      - handle: input
+        value:
+        from_node:
+          - node_id: +python#1
+            output_handle: output
+  - task: self::model
+    title: "Model #1"
+    node_id: model#1
+    inputs_from:
+      - handle: input
+        value:
+        from_node:
+          - node_id: prompt-repo-id-template#2
+            output_handle: output
+      - handle: interface
+        value: openai
+      - handle: model
+      - handle: api_key
+      - handle: base_url
+      - handle: temperature
+        value: 0
+      - handle: timeout
+        value: 120
+  - task: self::string-output
+    title: "String Output #2"
+    node_id: string-output#2
+    inputs_from:
+      - handle: input
+        value:
+        from_node:
+          - node_id: model#1
+            output_handle: output
+  - task: self::chain
+    title: "Chain #1"
+    node_id: chain#1
+    inputs_from:
+      - handle: model
+        value:
+        from_node:
+          - node_id: string-output#2
+            output_handle: output
+      - handle: input
+        value:
+        from_node:
+          - node_id: +python#3
+            output_handle: output
+  - task: oomol-preview::markdown-preview
+    title: "Markdown preview #1"
+    node_id: markdown-preview#1
+    inputs_from:
+      - handle: text
+        from_node:
+          - node_id: chain#1
+            output_handle: response
+  - task:
+      ui:
+        default_width: 450
+      inputs_def:
+        - handle: retriever
+          description: Input
+          json_schema:
+            contentMediaType: oomol/var
+          nullable: false
+      outputs_def:
+        - handle: output
+          description: Output
+          json_schema:
+            contentMediaType: oomol/var
+      executor:
+        name: python
+        options:
+          entry: scriptlets/+python#1.py
+    title: Combine context & input
+    icon: ":logos:python:"
+    node_id: +python#1
+    inputs_from:
+      - handle: retriever
+        value:
+        from_node:
+          - node_id: chroma-retriever#2
+            output_handle: output
+  - task: self::chroma-retriever
+    title: "Chroma Retriever #2"
+    node_id: chroma-retriever#2
+    inputs_from:
+      - handle: documents
+        value:
+          []
+        from_node:
+          - node_id: +python#2
+            output_handle: documents
+      - handle: embeddings
+        value:
+        from_node:
+          - node_id: local-embeddings#1
+            output_handle: embeddings
+      - handle: database_path
+        value:
+      - handle: search_k
+        value: 5
+      - handle: reset_database_at_beginning
+        value: true
+  - task: self::local-embeddings
+    title: "Local embeddings #1"
+    node_id: local-embeddings#1
+    inputs_from:
+      - handle: id
+        value: sentence-transformers/multi-qa-MiniLM-L6-cos-v1
+      - handle: query_template
+        value: "{question}"
+      - handle: model_dir
+        value:
+  - task:
+      ui:
+        default_width: 450
+      inputs_def:
+        - handle: texts
+          json_schema:
+            type: array
+            items:
+              type: string
+              ui:widget: text
+          value: ""
+      outputs_def:
+        - handle: documents
+          description: Output
+          json_schema:
+            contentMediaType: oomol/var
+      executor:
+        name: python
+        options:
+          entry: scriptlets/+python#2.py
+    title: Documents
+    icon: ":logos:python:"
+    node_id: +python#2
+    inputs_from:
+      - handle: texts
+        value:
+          - Self-reflection is a vital aspect that allows autonomous agents to
+            improve iteratively by refining past action decisions and correcting
+            previous mistakes. It plays a crucial role in real-world tasks where
+            trial and error are inevitable.
+          - ReAct (Yao et al. 2023) integrates reasoning and acting within LLM
+            by extending the action space to be a combination of task-specific
+            discrete actions and the language space. The former enables LLM to
+            interact with the environment (e.g. use Wikipedia search API), while
+            the latter prompting LLM to generate reasoning traces in natural
+            language.
+          - "The ReAct prompt template incorporates explicit steps for LLM to
+            think, roughly formatted as:"
+  - task:
+      ui:
+        default_width: 450
+      inputs_def:
+        []
+      outputs_def:
+        - handle: output
+          description: Output
+          json_schema:
+            type: string
+      executor:
+        name: python
+        options:
+          entry: scriptlets/+python#3.py
+    title: "Python #3"
+    icon: ":logos:python:"
+    node_id: +python#3

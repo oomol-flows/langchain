@@ -11,6 +11,8 @@ nodes:
               correct answer. You must use sarcasm."
           - role: user
             template: I am confused and have a question for you. {input}
+      - handle: input
+        value:
   - node_id: model#1
     node_type: task_node
     title: "Model #2"

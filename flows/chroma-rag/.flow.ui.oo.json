@@ -1,0 +1,116 @@
+{
+  "nodes": {
+    "prompt-repo-id-template#2": {
+      "contentWidth": 350,
+      "rfNode": {
+        "position": {
+          "x": 2057.6588421072684,
+          "y": 451.78109916323
+        }
+      }
+    },
+    "model#1": {
+      "contentWidth": 450,
+      "rfNode": {
+        "position": {
+          "x": 2470.7402774976595,
+          "y": 451.78109916323
+        }
+      }
+    },
+    "string-output#2": {
+      "contentWidth": 350,
+      "rfNode": {
+        "position": {
+          "x": 2966.713629564791,
+          "y": 451.78109916323
+        }
+      }
+    },
+    "chain#1": {
+      "contentWidth": 350,
+      "rfNode": {
+        "position": {
+          "x": 3376.6865851326315,
+          "y": 559.78109916323
+        }
+      }
+    },
+    "markdown-preview#1": {
+      "contentWidth": 450,
+      "rfNode": {
+        "position": {
+          "x": 3754.7950649551817,
+          "y": 451.78109916323
+        }
+      }
+    },
+    "+python#1": {
+      "contentWidth": 534.2575327703223,
+      "rfNode": {
+        "position": {
+          "x": 1474.549039360593,
+          "y": 451.78109916323
+        }
+      }
+    },
+    "chroma-retriever#2": {
+      "rfNode": {
+        "position": {
+          "x": 986.3258333783838,
+          "y": 629.78109916323
+        }
+      }
+    },
+    "local-embeddings#1": {
+      "contentWidth": 350,
+      "rfNode": {
+        "position": {
+          "x": 536.7061559985916,
+          "y": 945.78109916323
+        }
+      },
+      "sections": {
+        "inputs": {
+          "collapsed": {
+            "query_template": {
+              "[]": false
+            }
+          }
+        }
+      }
+    },
+    "+python#2": {
+      "contentWidth": 562.6309605055137,
+      "rfNode": {
+        "position": {
+          "x": 323.70615599859156,
+          "y": 67.05890528464066
+        }
+      },
+      "sections": {
+        "inputs": {
+          "collapsed": {
+            "texts": {
+              "[2]": false
+            }
+          }
+        }
+      }
+    },
+    "+python#3": {
+      "contentWidth": 469.3393517930609,
+      "rfNode": {
+        "position": {
+          "x": 2785.735254158612,
+          "y": 864.9818510991837
+        }
+      },
+      "sections": {
+        "scriptlet": {
+          "manualHeight": 91.79659682658901
+        }
+      }
+    }
+  }
+}
