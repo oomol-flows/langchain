@@ -80,7 +80,7 @@ nodes:
         value:
         from_node:
           - node_id: chroma-retriever#2
-            output_handle: output
+            output_handle: retriever
   - task: self::chroma-retriever
     title: "Chroma Retriever #2"
     node_id: chroma-retriever#2
@@ -164,6 +164,6 @@ nodes:
         name: python
         options:
           entry: scriptlets/+python#3.py
-    title: "Python #3"
+    title: "Generate question"
     icon: ":logos:python:"
     node_id: +python#3

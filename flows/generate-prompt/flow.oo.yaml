@@ -37,8 +37,6 @@ nodes:
     title: "Model #1"
     node_id: model#1
     inputs_from:
-      - handle: input
-        value:
       - handle: interface
         value: openai
       - handle: model
@@ -48,6 +46,8 @@ nodes:
         value: 0
       - handle: timeout
         value: 120
+      - handle: template
+        value:
   - task: oomol-preview::markdown-preview
     title: "Markdown preview #1"
     node_id: markdown-preview#1
